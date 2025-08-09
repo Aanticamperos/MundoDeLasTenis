@@ -94,7 +94,91 @@
   </div>
 
   <!-- Script principal -->
-  <script src="app.js"></script>
+  <script>
+    // Simulación de productos
+    const productos = [
+      { id: 1, nombre: "Tenis Nike Air", precio: 180000 },
+      { id: 2, nombre: "Adidas Classic", precio: 150000 },
+      { id: 3, nombre: "Puma Street", precio: 130000 }
+    ];
+
+    const carrito = [];
+
+    const productGrid = document.getElementById("productGrid");
+    const cartCount = document.getElementById("cartCount");
+    const cartItems = document.getElementById("cartItems");
+    const cartTotal = document.getElementById("cartTotal");
+    const cartModal = document.getElementById("cartModal");
+
+    // Mostrar productos
+    productos.forEach(producto => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <h4>${producto.nombre}</h4>
+        <p>$${producto.precio.toLocaleString()}</p>
+        <button class="btn" onclick="agregarAlCarrito(${producto.id})">Agregar 🛍️</button>
+      `;
+      productGrid.appendChild(card);
+    });
+
+    function agregarAlCarrito(id) {
+      const producto = productos.find(p => p.id === id);
+      const existente = carrito.find(item => item.id === id);
+      if (existente) {
+        existente.cantidad += 1;
+      } else {
+        carrito.push({ ...producto, cantidad: 1 });
+      }
+      actualizarCarrito();
+    }
+
+    function actualizarCarrito() {
+      cartItems.innerHTML = "";
+      let total = 0;
+      carrito.forEach(item => {
+        total += item.precio * item.cantidad;
+        const div = document.createElement("div");
+        div.innerHTML = `${item.nombre} x${item.cantidad} — $${(item.precio * item.cantidad).toLocaleString()}`;
+        cartItems.appendChild(div);
+      });
+      cartTotal.textContent = `$${total.toLocaleString()}`;
+      cartCount.textContent = carrito.length;
+      cartCount.style.display = carrito.length > 0 ? "inline-block" : "none";
+    }
+
+    document.getElementById("openCartBtn").addEventListener("click", () => {
+      cartModal.style.display = "block";
+    });
+
+    document.getElementById("closeCart").addEventListener("click", () => {
+      cartModal.style.display = "none";
+    });
+
+    document.getElementById("clearCartBtn").addEventListener("click", () => {
+      carrito.length = 0;
+      actualizarCarrito();
+    });
+
+    document.getElementById("checkoutBtn").addEventListener("click", () => {
+      const nombre = document.getElementById("customerName").value.trim();
+      const direccion = document.getElementById("customerAddress").value.trim();
+      if (!nombre) {
+        alert("Por favor ingresa tu nombre.");
+        return;
+      }
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+      }
+
+      const items = carrito.map(item => `• ${item.nombre} x${item.cantidad}`).join('\n');
+      const total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
+      const mensaje = `Hola, quiero hacer un pedido:\n\n${items}\n\nTotal: $${total.toLocaleString()}\nNombre: ${nombre}\nDirección: ${direccion}`;
+      const url = `https://wa.me/3217430829?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    });
+  </script>
 
 </body>
 </html>
