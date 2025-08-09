@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mundo de las Tenis — Tienda</title>
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
   <header>
     <div class="brand">Mundo de las Tenis</div>
     <div>
-      <button class="btn cart-btn" id="openCartBtn">
-        Carrito 🛒 <span id="cartCount" class="cart-count" style="display:none">0</span>
-      </button>
-      <a class="btn secondary" href="https://wa.me/3217430829" target="_blank" rel="noopener noreferrer">
-        WhatsApp
+      <a class="btn secondary icon-btn" href="https://wa.me/3217430829" target="_blank" rel="noopener noreferrer"
+        aria-label="WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0d6efd" viewBox="0 0 24 24"
+          aria-hidden="true" focusable="false">
+          <path
+            d="M20.52 3.48A11.922 11.922 0 0012 0a11.917 11.917 0 00-10.488 6.52c-1.245 2.132-1.57 4.807-.915 7.287l-.804 5.528a1 1 0 001.406 1.03l5.391-2.688a11.847 11.847 0 007.108 2.285c6.627 0 12-5.373 12-12a11.922 11.922 0 00-3.705-8.557zM12 21.5a9.52 9.52 0 01-5.038-1.423l-.36-.22-3.2 1.6.712-4.893-.234-.39A9.515 9.515 0 012.5 12c0-5.247 4.253-9.5 9.5-9.5S21.5 6.753 21.5 12 17.247 21.5 12 21.5zm5.26-7.2c-.12-.2-.44-.32-.92-.56-.48-.24-2.84-1.4-3.28-1.56-.44-.16-.76-.24-1.08.24-.32.48-1.22 1.56-1.5 1.88-.28.32-.56.36-1.04.12s-2.04-.75-3.9-2.42c-.72-.64-1.2-1.42-1.34-1.9-.14-.48-.02-.72.1-.96.1-.22.24-.48.36-.72.12-.24.16-.4.24-.64.08-.24 0-.44-.02-.6-.04-.16-1.08-2.6-1.48-3.56-.38-.92-.77-.8-1.08-.8h-.92c-.28 0-.6.08-.92.4s-1.2 1.17-1.2 2.84 1.23 3.3 1.4 3.54c.16.24 2.4 3.7 5.82 5.2.81.35 1.44.56 1.93.72.81.27 1.55.23 2.13.14.65-.11 2.02-.82 2.3-1.62.3-.8.3-1.48.21-1.62z" />
+        </svg>
       </a>
+
     </div>
   </header>
 
@@ -66,20 +71,10 @@
       </div>
 
       <div>
-        <input
-          id="customerName"
-          type="text"
-          placeholder="Tu nombre"
-          aria-label="Nombre del cliente"
-          autocomplete="name"
-        />
-        <input
-          id="customerAddress"
-          type="text"
-          placeholder="Dirección / barrio (opcional)"
-          aria-label="Dirección o barrio"
-          autocomplete="address-line1"
-        />
+        <input id="customerName" type="text" placeholder="Tu nombre" aria-label="Nombre del cliente"
+          autocomplete="name" />
+        <input id="customerAddress" type="text" placeholder="Dirección / barrio (opcional)"
+          aria-label="Dirección o barrio" autocomplete="address-line1" />
       </div>
     </footer>
   </div>
@@ -256,4 +251,5 @@
   </script>
 
 </body>
+
 </html>

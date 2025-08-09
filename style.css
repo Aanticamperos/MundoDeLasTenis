@@ -476,3 +476,33 @@ footer.cart-footer input:focus {
     bottom: 18px;
   }
 }
+
+/* Botón icono redondo */
+.icon-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 2px solid #0d6efd;
+  color: #0d6efd;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.icon-btn:hover,
+.icon-btn:focus-visible {
+  background-color: #0d6efd;
+  color: #fff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.7);
+}
+
+.icon-btn svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
