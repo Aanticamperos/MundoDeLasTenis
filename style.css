@@ -506,3 +506,11 @@ footer.cart-footer input:focus {
   height: 24px;
   fill: currentColor;
 }
+
+
+.btn.secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* opcional, para separar el icono del texto */
+  /* demás estilos que tengas */
+}
