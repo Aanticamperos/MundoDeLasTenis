@@ -78,6 +78,38 @@
         <input id="customerAddress" type="text" placeholder="Dirección / barrio (opcional)"
           aria-label="Dirección o barrio" autocomplete="address-line1" />
       </div>
+
+      <section class="faq-section">
+        <h3>Preguntas Frecuentes</h3>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-button">
+            ¿Cuáles son las opciones de pago disponibles?
+          </button>
+          <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1-button" hidden>
+            Aceptamos pagos por transferencia bancaria y pago en efectivo al momento de la entrega.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-button">
+            ¿Cuánto tarda el envío?
+          </button>
+          <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2-button" hidden>
+            Los envíos se realizan en un plazo de 2 a 5 días hábiles dependiendo de la ubicación.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-button">
+            ¿Puedo cambiar o devolver un producto?
+          </button>
+          <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3-button" hidden>
+            Sí, tienes 7 días para solicitar cambio o devolución, siempre que el producto esté en perfectas condiciones.
+          </div>
+        </div>
+      </section>
+
+
     </footer>
   </div>
 
@@ -250,6 +282,37 @@
     });
 
     actualizarCarrito();
+
+
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        // Cierra todos
+        document.querySelectorAll('.faq-question').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+        document.querySelectorAll('.faq-answer').forEach(ans => ans.hidden = true);
+
+        // Si estaba cerrado, abrir
+        if (!expanded) {
+          button.setAttribute('aria-expanded', 'true');
+          const answer = document.getElementById(button.getAttribute('aria-controls'));
+          answer.hidden = false;
+        }
+      });
+    });
+
+    // Foco inicial al abrir el carrito
+    document.getElementById("openCartBtn").addEventListener("click", () => {
+      cartModal.style.display = "block";
+      cartItems.focus();
+    });
+
+    // Cerrar modal con Escape
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && cartModal.style.display === "block") {
+        cartModal.style.display = "none";
+      }
+    });
+
   </script>
 
 </body>
