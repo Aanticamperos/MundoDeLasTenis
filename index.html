@@ -7,7 +7,6 @@
   <title>Mundo de las Tenis — Tienda</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-
 </head>
 
 <body>
@@ -22,8 +21,6 @@
         <i class="fab fa-whatsapp" aria-hidden="true" style="margin-right: 8px;"></i>
         WhatsApp
       </a>
-
-
     </div>
   </header>
 
@@ -47,6 +44,37 @@
         <!-- Productos cargados por JS -->
       </div>
     </section>
+
+    <section class="faq-section">
+      <h3>Preguntas Frecuentes</h3>
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-button">
+          ¿Cuáles son las opciones de pago disponibles?
+        </button>
+        <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1-button" hidden>
+          Aceptamos pagos por transferencia bancaria y pago en efectivo al momento de la entrega.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-button">
+          ¿Cuánto tarda el envío?
+        </button>
+        <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2-button" hidden>
+          Los envíos se realizan en un plazo de 2 a 5 días hábiles dependiendo de la ubicación.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-button">
+          ¿Puedo cambiar o devolver un producto?
+        </button>
+        <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3-button" hidden>
+          Sí, tienes 7 días para solicitar cambio o devolución, siempre que el producto esté en perfectas condiciones.
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <div id="cartModal" class="modal" style="display:none" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
@@ -73,247 +101,14 @@
       </div>
 
       <div>
-        <input id="customerName" type="text" placeholder="Tu nombre" aria-label="Nombre del cliente"
-          autocomplete="name" />
-        <input id="customerAddress" type="text" placeholder="Dirección / barrio (opcional)"
-          aria-label="Dirección o barrio" autocomplete="address-line1" />
+        <input id="customerName" type="text" placeholder="Tu nombre" aria-label="Nombre del cliente" autocomplete="name" />
+        <input id="customerAddress" type="text" placeholder="Dirección / barrio (opcional)" aria-label="Dirección o barrio" autocomplete="address-line1" />
       </div>
-
-      <section class="faq-section">
-        <h3>Preguntas Frecuentes</h3>
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq1" id="faq1-button">
-            ¿Cuáles son las opciones de pago disponibles?
-          </button>
-          <div id="faq1" class="faq-answer" role="region" aria-labelledby="faq1-button" hidden>
-            Aceptamos pagos por transferencia bancaria y pago en efectivo al momento de la entrega.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq2" id="faq2-button">
-            ¿Cuánto tarda el envío?
-          </button>
-          <div id="faq2" class="faq-answer" role="region" aria-labelledby="faq2-button" hidden>
-            Los envíos se realizan en un plazo de 2 a 5 días hábiles dependiendo de la ubicación.
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-question" aria-expanded="false" aria-controls="faq3" id="faq3-button">
-            ¿Puedo cambiar o devolver un producto?
-          </button>
-          <div id="faq3" class="faq-answer" role="region" aria-labelledby="faq3-button" hidden>
-            Sí, tienes 7 días para solicitar cambio o devolución, siempre que el producto esté en perfectas condiciones.
-          </div>
-        </div>
-      </section>
-
-
     </footer>
   </div>
 
-  <script>
-    // Productos con imagen y tallas disponibles
-    const productos = [
-      {
-        id: 1,
-        nombre: "Tenis Nike Air",
-        precio: 180000,
-        imagen: "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRevt2Bx0-zxv8RWuMsc2SrnifAYw4nvZ81JxkXlolB6KtQ-Daqf2mXIazDk3u9FfYxd9cCJlZQg_Hzugdz65-J1xgD-e2goG6P27DZS3gpZeCCqYGlKZJN9zU",
-        tallas: [36, 37, 38, 39, 40, 41, 42]
-      },
-      {
-        id: 2,
-        nombre: "Adidas Classic",
-        precio: 150000,
-        imagen: "https://images.unsplash.com/photo-1519741493670-3a8e44d7f29e?auto=format&fit=crop&w=400&q=80",
-        tallas: [37, 38, 39, 40, 41]
-      },
-      {
-        id: 3,
-        nombre: "Puma Street",
-        precio: 130000,
-        imagen: "https://images.unsplash.com/photo-1600185369446-cbb5a59b35f4?auto=format&fit=crop&w=400&q=80",
-        tallas: [38, 39, 40, 41, 42, 43]
-      }
-    ];
-
-    const carrito = [];
-
-    const productGrid = document.getElementById("productGrid");
-    const cartCount = document.getElementById("cartCount");
-    const cartItems = document.getElementById("cartItems");
-    const cartTotal = document.getElementById("cartTotal");
-    const cartModal = document.getElementById("cartModal");
-
-    // Mostrar productos con selector de talla
-    productos.forEach(producto => {
-      const card = document.createElement("div");
-      card.className = "card";
-      card.innerHTML = `
-        <img src="${producto.imagen}" alt="${producto.nombre}" />
-        <h4>${producto.nombre}</h4>
-        <p>$${producto.precio.toLocaleString()}</p>
-        <label for="talla-${producto.id}">Talla:</label>
-        <select id="talla-${producto.id}" aria-label="Selecciona talla para ${producto.nombre}">
-          <option value="" disabled selected>Elige talla</option>
-          ${producto.tallas.map(t => `<option value="${t}">${t}</option>`).join('')}
-        </select>
-        <button class="btn" onclick="agregarAlCarrito(${producto.id})">Agregar 🛍️</button>
-      `;
-      productGrid.appendChild(card);
-    });
-
-    function agregarAlCarrito(id) {
-      const producto = productos.find(p => p.id === id);
-      const select = document.getElementById(`talla-${id}`);
-      const talla = select.value;
-
-      if (!talla) {
-        alert("Por favor selecciona una talla.");
-        select.focus();
-        return;
-      }
-
-      const existente = carrito.find(item => item.id === id && item.talla === talla);
-      if (existente) {
-        existente.cantidad += 1;
-      } else {
-        carrito.push({ ...producto, cantidad: 1, talla });
-      }
-      actualizarCarrito();
-    }
-
-    function actualizarCarrito() {
-      cartItems.innerHTML = "";
-      if (carrito.length === 0) {
-        cartItems.textContent = "Tu carrito está vacío.";
-        cartCount.style.display = "none";
-        cartTotal.textContent = "$0";
-        return;
-      }
-
-      let total = 0;
-      carrito.forEach(item => {
-        total += item.precio * item.cantidad;
-
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = `
-          <img src="${item.imagen}" alt="${item.nombre}" />
-          <div class="cart-item-details">
-            <strong>${item.nombre}</strong><br />
-            Talla: ${item.talla}<br />
-            Cantidad: ${item.cantidad}<br />
-            Precio: $${(item.precio * item.cantidad).toLocaleString()}
-          </div>
-          <div>
-            <button aria-label="Aumentar cantidad" onclick="cambiarCantidad(${item.id}, '${item.talla}', 1)">+</button>
-            <button aria-label="Disminuir cantidad" onclick="cambiarCantidad(${item.id}, '${item.talla}', -1)">−</button>
-            <button aria-label="Eliminar producto" onclick="eliminarProducto(${item.id}, '${item.talla}')">✕</button>
-          </div>
-        `;
-        cartItems.appendChild(div);
-      });
-
-      cartTotal.textContent = `$${total.toLocaleString()}`;
-      cartCount.textContent = carrito.length;
-      cartCount.style.display = carrito.length > 0 ? "inline-block" : "none";
-    }
-
-    function cambiarCantidad(id, talla, delta) {
-      const item = carrito.find(i => i.id === id && i.talla === talla);
-      if (!item) return;
-      item.cantidad += delta;
-      if (item.cantidad <= 0) {
-        eliminarProducto(id, talla);
-      } else {
-        actualizarCarrito();
-      }
-    }
-
-    function eliminarProducto(id, talla) {
-      const index = carrito.findIndex(i => i.id === id && i.talla === talla);
-      if (index > -1) {
-        carrito.splice(index, 1);
-        actualizarCarrito();
-      }
-    }
-
-    document.getElementById("openCartBtn").addEventListener("click", () => {
-      cartModal.style.display = "block";
-      cartModal.focus();
-    });
-
-    document.getElementById("closeCart").addEventListener("click", () => {
-      cartModal.style.display = "none";
-    });
-
-    document.getElementById("clearCartBtn").addEventListener("click", () => {
-      carrito.length = 0;
-      actualizarCarrito();
-    });
-
-    document.getElementById("checkoutBtn").addEventListener("click", () => {
-      const nombre = document.getElementById("customerName").value.trim();
-      const direccion = document.getElementById("customerAddress").value.trim();
-
-      if (!nombre) {
-        alert("Por favor ingresa tu nombre.");
-        return;
-      }
-
-      if (carrito.length === 0) {
-        alert("Tu carrito está vacío.");
-        return;
-      }
-
-      const itemsTexto = carrito.map(item =>
-        `• ${item.nombre} (Talla: ${item.talla}) x${item.cantidad} — $${(item.precio * item.cantidad).toLocaleString()}`
-      ).join('\n');
-
-      const total = carrito.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
-
-      const mensaje = `Hola, quiero hacer un pedido:\n\n${itemsTexto}\n\nTotal: $${total.toLocaleString()}\nNombre: ${nombre}\nDirección: ${direccion}`;
-      const url = `https://wa.me/3217430829?text=${encodeURIComponent(mensaje)}`;
-
-      window.open(url, "_blank");
-    });
-
-    actualizarCarrito();
-
-
-    document.querySelectorAll('.faq-question').forEach(button => {
-      button.addEventListener('click', () => {
-        const expanded = button.getAttribute('aria-expanded') === 'true';
-        // Cierra todos
-        document.querySelectorAll('.faq-question').forEach(btn => btn.setAttribute('aria-expanded', 'false'));
-        document.querySelectorAll('.faq-answer').forEach(ans => ans.hidden = true);
-
-        // Si estaba cerrado, abrir
-        if (!expanded) {
-          button.setAttribute('aria-expanded', 'true');
-          const answer = document.getElementById(button.getAttribute('aria-controls'));
-          answer.hidden = false;
-        }
-      });
-    });
-
-    // Foco inicial al abrir el carrito
-    document.getElementById("openCartBtn").addEventListener("click", () => {
-      cartModal.style.display = "block";
-      cartItems.focus();
-    });
-
-    // Cerrar modal con Escape
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && cartModal.style.display === "block") {
-        cartModal.style.display = "none";
-      }
-    });
-
-  </script>
+  <!-- Enlaza aquí el JS externo -->
+  <script src="script.js" defer></script>
 
 </body>
 
