@@ -1,22 +1,19 @@
-/* Ajuste para móvil */
 @media (max-width: 600px) {
-    .cart-container {
-        width: 85% !important;
-        /* casi todo el ancho de la pantalla */
-        right: 2.5vw !important;
-        /* centrado un poco con espacio lateral */
-        bottom: 10px !important;
-        /* espacio abajo */
-        max-height: 300px !important;
-        /* para que no ocupe toda la pantalla */
-        border-radius: 8px !important;
-    }
+  .cart-container {
+    width: 90vw !important;       /* ancho casi completo */
+    right: 5vw !important;        /* margen lateral */
+    bottom: 10px !important;      /* margen inferior */
+    max-height: 60vh !important;  /* altura máxima relativa a la ventana */
+    border-radius: 8px !important;
+    padding: 0.8rem !important;
+  }
 
-    /* Para evitar que el container padding-bottom deje espacio excesivo en móvil */
-    .container {
-        padding-bottom: 320px !important;
-    }
+  /* Ajustamos el padding-bottom para que no cree espacio extra innecesario */
+  .container {
+    padding-bottom: 80px !important; 
+  }
 }
+
 
 
 
