@@ -1,7 +1,7 @@
 /* Ajuste para móvil */
 @media (max-width: 600px) {
     .cart-container {
-        width: 95vw !important;
+        width: 90vw !important;
         /* casi todo el ancho de la pantalla */
         right: 2.5vw !important;
         /* centrado un poco con espacio lateral */

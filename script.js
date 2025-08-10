@@ -222,7 +222,7 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
     const product = PRODUCTS.find(p => p.codigo == codigo)
     const subtotal = product.precio * qty
     total += subtotal
-    message += `- ${product.nombre} ${product.codigo} (Talla ${talla}) x${qty} = $${subtotal.toLocaleString('es-CO')}%0A`
+    message += `- ${product.nombre} (${product.codigo}) (Talla ${talla}) x${qty} = $${subtotal.toLocaleString('es-CO')}%0A`
   })
   message += `Total: $${total.toLocaleString('es-CO')}`
 
