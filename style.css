@@ -1,18 +1,23 @@
 @media (max-width: 600px) {
   .cart-container {
-    width: 90vw !important;       /* ancho casi completo */
-    right: 5vw !important;        /* margen lateral */
-    bottom: 10px !important;      /* margen inferior */
-    max-height: 60vh !important;  /* altura máxima relativa a la ventana */
+    position: fixed;
+    bottom: 10px !important;
+    left: 50% !important;       /* centrar horizontal */
+    transform: translateX(-50%) !important; /* compensar el left 50% */
+    width: 90vw !important;      /* casi todo el ancho */
+    max-height: 60vh !important;
     border-radius: 8px !important;
     padding: 0.8rem !important;
+    box-sizing: border-box;      /* para que padding no aumente ancho */
+    overflow-y: auto;
+    z-index: 1000;
   }
 
-  /* Ajustamos el padding-bottom para que no cree espacio extra innecesario */
   .container {
-    padding-bottom: 80px !important; 
+    padding-bottom: 80px !important;
   }
 }
+
 
 
 
