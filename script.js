@@ -234,3 +234,40 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
 // Inicializar
 filterProducts()
 renderCart()
+
+
+const modal = document.getElementById('imageModal')
+const modalImg = document.getElementById('modalImg')
+const closeBtn = modal.querySelector('.closeBtn')
+
+// Delegación de evento para todas las imágenes dentro de .product-grid
+productGrid.addEventListener('click', e => {
+  if(e.target.tagName === 'IMG' && e.target.closest('.card')) {
+    modal.style.display = 'block'
+    modal.setAttribute('aria-hidden', 'false')
+    modalImg.src = e.target.src
+    modalImg.alt = e.target.alt
+    closeBtn.focus()
+  }
+})
+
+closeBtn.addEventListener('click', () => {
+  modal.style.display = 'none'
+  modal.setAttribute('aria-hidden', 'true')
+})
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape' && modal.style.display === 'block') {
+    modal.style.display = 'none'
+    modal.setAttribute('aria-hidden', 'true')
+  }
+})
+
+// También cerrar si clic afuera de la imagen
+modal.addEventListener('click', e => {
+  if(e.target === modal) {
+    modal.style.display = 'none'
+    modal.setAttribute('aria-hidden', 'true')
+  }
+})

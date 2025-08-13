@@ -50,13 +50,19 @@
     </div>
 
     <div class="product-grid" id="productGrid" aria-live="polite"></div>
-    
+
     <div class="cart-container">
       <h3>Carrito de Compras</h3>
       <div id="cartItems">El carrito está vacío.</div>
       <p id="cartTotal"></p>
       <button id="checkoutBtn" style="display:none;">Pagar por WhatsApp</button>
     </div>
+
+    <div id="imageModal" class="modal" aria-hidden="true" role="dialog" aria-label="Vista previa de imagen">
+      <span class="closeBtn" role="button" tabindex="0" aria-label="Cerrar">&times;</span>
+      <img class="modal-content" id="modalImg" alt="Imagen ampliada" />
+    </div>
+
 
 
   </div>
