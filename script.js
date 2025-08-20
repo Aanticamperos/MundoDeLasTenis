@@ -271,3 +271,44 @@ modal.addEventListener('click', e => {
     modal.setAttribute('aria-hidden', 'true')
   }
 })
+
+
+const termsModal = document.getElementById("termsModal");
+const openTerms = document.getElementById("openTerms");
+
+// Preguntas frecuentes
+const faqModal = document.getElementById("faqModal");
+const openFAQ = document.getElementById("openFAQ");
+
+// Botones de cerrar (ambos modales)
+const closeBtns = document.getElementsByClassName("close");
+
+// Abrir modal Términos
+openTerms.onclick = function(e) {
+  e.preventDefault();
+  termsModal.style.display = "block";
+}
+
+// Abrir modal FAQ
+openFAQ.onclick = function(e) {
+  e.preventDefault();
+  faqModal.style.display = "block";
+}
+
+// Cerrar modales
+for(let i = 0; i < closeBtns.length; i++){
+  closeBtns[i].onclick = function() {
+    termsModal.style.display = "none";
+    faqModal.style.display = "none";
+  }
+}
+
+// Cerrar modal si se da clic fuera del contenido
+window.onclick = function(event) {
+  if (event.target == termsModal) {
+    termsModal.style.display = "none";
+  }
+  if (event.target == faqModal) {
+    faqModal.style.display = "none";
+  }
+}
