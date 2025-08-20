@@ -232,6 +232,7 @@ header h1 span {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.4s ease; /* animación entrada */
 }
 
 .modal-content {
@@ -240,8 +241,11 @@ header h1 span {
   max-width: 90%;
   max-height: 80vh;
   border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+  animation: zoomIn 0.4s ease; /* animación del contenido */
 }
 
+/* Botón cerrar */
 .closeBtn {
   position: absolute;
   top: 30px;
@@ -251,11 +255,25 @@ header h1 span {
   font-weight: bold;
   cursor: pointer;
   user-select: none;
+  transition: transform 0.2s ease, color 0.3s ease;
 }
 
 .closeBtn:hover {
-  color: #ccc;
+  color: #ff4444;
+  transform: rotate(90deg) scale(1.2); /* efecto dinámico */
 }
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
 
 .footer {
   background-color: #333;
@@ -298,7 +316,7 @@ header h1 span {
 }
 
 .footer-section a:hover {
-  color: #1625fd;
+  color: #16fd22;
   /* Cambio de color al pasar el mouse */
   transform: scale(1.05);
   /* Pequeña animación */
@@ -327,3 +345,24 @@ header h1 span {
   margin-top: 20px;
   font-size: 12px;
 }
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fadeIn {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+/* Animación de salida */
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.fadeOut {
+  animation: fadeOut 0.4s ease forwards;
+}
+/* Estilos para el modal de producto */

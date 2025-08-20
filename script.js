@@ -226,7 +226,7 @@ document.getElementById('checkoutBtn').addEventListener('click', () => {
   })
   message += `Total: $${total.toLocaleString('es-CO')}`
 
-  const whatsappNumber = '3217430829' // tu número sin + ni espacios
+  const whatsappNumber = '3217430829' 
   const url = `https://wa.me/${whatsappNumber}?text=${message}`
   window.open(url, '_blank')
 })
@@ -312,3 +312,61 @@ window.onclick = function(event) {
     faqModal.style.display = "none";
   }
 }
+
+
+// Funciones genéricas para abrir/cerrar modales
+function openModal(id) {
+  const modal = document.getElementById(id)
+  if (!modal) return
+  modal.style.display = "flex"
+  modal.classList.remove("fadeOut")
+  modal.classList.add("fadeIn")
+}
+
+function closeModal(id) {
+  const modal = document.getElementById(id)
+  if (!modal) return
+  modal.classList.remove("fadeIn")
+  modal.classList.add("fadeOut")
+  setTimeout(() => {
+    modal.style.display = "none"
+  }, 300)
+}
+
+// Abrir modales desde links
+document.getElementById("openTerms").addEventListener("click", e => {
+  e.preventDefault()
+  openModal("termsModal")
+})
+
+document.getElementById("openFAQ").addEventListener("click", e => {
+  e.preventDefault()
+  openModal("faqModal")
+})
+
+// Cerrar con botón (X)
+document.querySelectorAll(".closeBtn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const id = btn.dataset.close
+    closeModal(id)
+  })
+})
+
+// Cerrar al hacer clic fuera del contenido
+document.querySelectorAll(".modal").forEach(modal => {
+  modal.addEventListener("click", e => {
+    if (e.target.classList.contains("modal")) {
+      closeModal(modal.id)
+    }
+  })
+})
+
+// Cerrar con tecla ESC
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") {
+    document.querySelectorAll(".modal").forEach(m => {
+      if (m.style.display === "flex") closeModal(m.id)
+    })
+  }
+})
+
