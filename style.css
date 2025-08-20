@@ -365,4 +365,30 @@ header h1 span {
 .fadeOut {
   animation: fadeOut 0.4s ease forwards;
 }
-/* Estilos para el modal de producto */
+
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95% !important;
+    max-width: 95% !important;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 14px; /* texto más compacto */
+  }
+
+  .modal-content h2 {
+    font-size: 18px;
+  }
+
+  .modal-content p {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .closeBtn {
+    font-size: 24px;
+    top: 10px;
+    right: 12px;
+  }
+}
